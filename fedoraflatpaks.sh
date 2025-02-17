@@ -1,0 +1,24 @@
+#!/bin/bash
+flatpak install cartero
+flatpak install com.discordapp.Discord
+flatpak install com.getpostman.Postman
+flatpak install com.her01n.BatteryInfo
+flatpak install com.rafaelmardojai.Blanket
+flatpak install com.spotify.Client
+flatpak install de.haeckerfelix.Shortwave
+flatpak install dev.geopjr.Calligraphy
+flatpak install im.riot.Riot
+flatpak install io.github.amit9838.mousam
+flatpak install io.github.dvlv.boxbuddyrs
+flatpak install io.github.seadve.Kooha
+flatpak install io.github.sigmasd.stimulator
+flatpak install io.gitlab.adhami3310.Impression
+flatpak install io.missioncenter.MissionCenter
+flatpak install org.gnome.baobab
+flatpak install org.gnome.DejaDup
+flatpak install org.gnome.gitlab.somas.Apostrophe
+flatpak install org.gnome.Podcasts
+flatpak install org.libretro.RetroArch
+flatpak install org.signal.Signal
+flatpak install org.squidowl.halloy
+flatpak install rest.insomnia.Insomnia
