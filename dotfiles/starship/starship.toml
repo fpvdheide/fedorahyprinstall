@@ -1,121 +1,54 @@
-# Insert a blank line between shell prompts
-add_newline = true
+# starship.toml
 
-# Increase the default command timeout to 2 seconds
-command_timeout = 2000
+add_newline = false
+palette = "default"
 
-palette = "catppuccin_macchiato"
-
-# Then, this `palettes` entry can go at the bottom of the TOML file
-# You may add additional palettes as desired.
-[palettes.catppuccin_macchiato]
-rosewater = "#f4dbd6"
-flamingo = "#f0c6c6"
-pink = "#f5bde6"
-mauve = "#c6a0f6"
-red = "#ed8796"
-maroon = "#ee99a0"
-peach = "#f5a97f"
-yellow = "#eed49f"
-green = "#a6da95"
-teal = "#8bd5ca"
-sky = "#91d7e3"
-sapphire = "#7dc4e4"
-blue = "#8aadf4"
-lavender = "#b7bdf8"
-text = "#cad3f5"
-subtext1 = "#b8c0e0"
-subtext0 = "#a5adcb"
-overlay2 = "#939ab7"
-overlay1 = "#8087a2"
-overlay0 = "#6e738d"
-surface2 = "#5b6078"
-surface1 = "#494d64"
-surface0 = "#363a4f"
-base = "#24273a"
-mantle = "#1e2030"
-crust = "#181926"
-
-# Define the order and format of the information in our prompt
-format = """\
-[](fg:#3B76F0)\
+format = """
+[╭](fg:separator)\
+$status\
 $directory\
-${custom.directory_separator_not_git}\
-${custom.directory_separator_git}\
-$symbol($git_branch[](fg:#FCF392))\
-$symbol( $git_commit$git_status$git_metrics$git_state)$fill$cmd_duration$nodejs$all\
-${custom.git_config_email}
-$character"""
+$cmd_duration\
+$line_break\
+[╰](fg:separator)\
+$character\
+"""
 
-# Fill character (empty space) between the left and right prompt
-[fill]
-symbol = " "
+###########################################
 
-# Disable the line break between the first and second prompt lines
-[line_break]
-disabled = true
+[palettes.default]
+prompt_ok  = "#8047c1"
+prompt_err = "#e23140"
+icon       = "#161514"
+separator  = "#35312c"
+background = "#35312c"
 
-# Customize the format of the working directory
+directory  = "#9f31e2"
+duration   = "#e26f31"
+status     = "#e23140"
+
+###########################################
+
+[character]
+success_symbol = "[❯](fg:prompt_ok)"
+error_symbol = "[❯](fg:prompt_err)"
+
 [directory]
-truncate_to_repo = true
-format = "[ﱮ $path ]($style)"
-style = "fg:text bg:#3B76F0"
+format = "[─](fg:separator)[](fg:directory)[](fg:icon bg:directory)[](fg:directory bg:background)[ $path](bg:background)[](fg:background)"
+truncate_to_repo = false
+truncation_length = 0
 
-[git_branch]
-symbol = " "
-format = "[ $symbol$branch(:$remote_branch) ]($style)"
-style = "fg:#1C3A5E bg:#FCF392"
-
-[git_metrics]
+[status]
+format = "[─](fg:separator)[](fg:status)[](fg:icon bg:status)[](fg:status bg:background)[ $status](bg:background)[](fg:background)"
+pipestatus = true
+pipestatus_separator = "-"
+pipestatus_segment_format = "$status"
+pipestatus_format = "[─](fg:separator)[](fg:status)[](fg:icon bg:status)[](fg:status bg:background)[ $pipestatus](bg:background)[](fg:background)"
 disabled = false
 
-[nodejs]
-format = "via [$symbol($version )]($style)"
-style = "yellow"
-
-[package]
-disabled = true # Enable to output the current working directory's package version
-format = "[$symbol$version]($style) "
-display_private = true
-
-# Output the command duration if over 2 seconds
 [cmd_duration]
-min_time = 2_000
-format = "[  $duration ]($style)"
-style = "white"
+format = "[─](fg:separator)[](fg:duration)[󱐋](fg:icon bg:duration)[](fg:duration bg:background)[ $duration](bg:background)[](fg:background)"
+min_time = 1000
 
-# Customize the battery indicator
-[battery]
-format = "[$symbol $percentage]($style) "
-empty_symbol = "🪫"
-charging_symbol = "🔋"
-full_symbol = '🔋'
-
-[[battery.display]]
-threshold = 10
-style = 'red'
-
-# Output the current git config email address
-[custom.git_config_email]
-description = "Output the current git user's configured email address."
-command = "git config user.email"
-format = "\n[$symbol(  $output)]($style)"
-# Only when inside git repository
-when = "git rev-parse --is-inside-work-tree >/dev/null 2>&1"
-style = "text"
-
-# Output a styled separator right after the directory when inside a git repository.
-[custom.directory_separator_git]
-description = "Output a styled separator right after the directory when inside a git repository."
-command = ""
-format = "[](fg:#3B76F0 bg:#FCF392)"
-# Only when inside git repository
-when = "git rev-parse --is-inside-work-tree >/dev/null 2>&1"
-
-# Output a styled separator right after the directory when NOT inside a git repository.
-[custom.directory_separator_not_git]
-description = "Output a styled separator right after the directory when NOT inside a git repository."
-command = ""
-format = "[](fg:#3B76F0)"
-# Only when NOT inside a git repository
-when = "! git rev-parse --is-inside-work-tree > /dev/null 2>&1"
+[time]
+format = "[](fg:duration)[󰥔](fg:icon bg:duration)[](fg:duration bg:background)[ $time](bg:background)[](fg:background)"
+disabled = false
