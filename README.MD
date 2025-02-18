@@ -1,9 +1,16 @@
-Install Fedora Workstation 41
-Install the following packages using dnf:
+This document will help you set up a Fedora 41 Workstation installation with hyprland and a full suite of applications ranging from development to gaming.
+
+Install Fedora Workstation 41: https://fedoraproject.org/workstation/
+
+Install a browser of choice, Fedora comes with Firefox by default. For example the Brave browser:
+- flatpak install com.brave.Browser
+
+Install the following packages using dnf according to your preference:
 
 - fastfetch
 - tldr
-- fish
+- fish (or zsh)
+- rustup
 - vim
 - neovim
 
@@ -27,4 +34,9 @@ libreoffice-data
 
 Install your Flatpak packages
 
+Install dnf packages
+clapper
+evolution
+gimp
+transmission
 Install steam 

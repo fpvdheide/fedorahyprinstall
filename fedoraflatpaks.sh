@@ -22,3 +22,5 @@ flatpak install org.libretro.RetroArch
 flatpak install org.signal.Signal
 flatpak install org.squidowl.halloy
 flatpak install rest.insomnia.Insomnia
+flatpak install org.kde.krita
+flatpak install org.kde.kdenlive
