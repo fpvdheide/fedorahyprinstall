@@ -33,8 +33,10 @@ xdg-settings set default-web-browser com.brave.Browser.desktop
 remove
 nano
 libreoffice-data
-
-
+gnome-calendar
+gnome-contacts
+  gnome-text-editor
+mousepad
 
 Install dnf packages
 - distrobox
@@ -42,7 +44,10 @@ Install dnf packages
 - evolution
 - gimp
 - transmission
+- xed
 - steam
+
+sudo flatpak remote-delete fedora
 
 Install your Flatpak packages (see example script)
 Install your dotfiles (see example dotfiles)
